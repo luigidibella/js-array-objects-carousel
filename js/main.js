@@ -83,13 +83,67 @@ myNext.addEventListener('click', function(){
     itemsCollection2[counterImg].classList.add('active');
 })
 
+// MINIATURE
+for (let i = 0; i < itemsCollection2.length; i++) {
+    itemsCollection2[i].addEventListener('click', function() {
+        changeItem(i);
+    });
+}
+
+function changeItem(index) {
+    itemsCollection[counterImg].classList.remove('active');
+    itemsCollection2[counterImg].classList.remove('active');
+    counterImg = index;
+    itemsCollection[counterImg].classList.add('active');
+    itemsCollection2[counterImg].classList.add('active');
+}
+
 // AUTOPLAY
-function autoplay(){
+function autoplay() {
     itemsCollection[counterImg].classList.remove('active');
     itemsCollection2[counterImg].classList.remove('active');
     counterImg = (counterImg + 1) % itemsCollection.length;
     itemsCollection[counterImg].classList.add('active');
     itemsCollection2[counterImg].classList.add('active');
 }
-  
-/* setInterval(autoplay, 3000) */
+
+let isAutoplayActive = false;
+
+const playButton = document.querySelector('.play');
+
+playButton.addEventListener('click', function () {
+    if (isAutoplayActive) {
+        clearInterval(autoplayInterval);
+        isAutoplayActive = false;
+        playButton.textContent = "PLAY";
+    } else {
+        autoplayInterval = setInterval(autoplay, 3000);
+        isAutoplayActive = true;
+        playButton.textContent = "STOP";
+    }
+});
+
+// REVERSE
+function reverse() {
+    itemsCollection[counterImg].classList.remove('active');
+    itemsCollection2[counterImg].classList.remove('active');
+    counterImg = (counterImg - 1 + itemsCollection.length) % itemsCollection.length;
+    itemsCollection[counterImg].classList.add('active');
+    itemsCollection2[counterImg].classList.add('active');
+}
+
+let isReverseActive = false;
+
+const reverseButton = document.querySelector('.reverse');
+
+reverseButton.addEventListener('click', function () {
+    if (isReverseActive) {
+        clearInterval(reverseInterval);
+        isReverseActive = false;
+        reverseButton.textContent = "REVERSE";
+    } else {
+        reverseInterval = setInterval(reverse, 3000);
+        isReverseActive = true;
+        reverseButton.textContent = "STOP";
+    }
+});

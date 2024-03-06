@@ -20,6 +20,7 @@ div.my-thumbnails{
     /* background-color: violet; */
     height: 160px;
     border: 1px solid;
+    cursor: pointer;
 }
 
 div.my-previous,
