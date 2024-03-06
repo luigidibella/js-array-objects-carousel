@@ -57,6 +57,13 @@ div.my-next > span::after{
     line-height: 30px;
 }
 
+div.my-previous:hover,
+div.my-next:hover{
+    color: brown;
+    background-color: white;
+    transition: all 0.7s;
+}
+
 div.my-carousel-item{
     display: none;
 }
@@ -107,5 +114,3 @@ div#my-carousel .my-thumbnails .my-thumbnail.active{
     filter:brightness(1);
     border: 3px rgb(197, 197, 197) solid;
 }
-
-
